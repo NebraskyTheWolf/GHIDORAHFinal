@@ -3,7 +3,7 @@ module.exports = {
         name: "row_informations"
     },
     async execute(interaction, interactionUser, guild) {
-       await interaction.reply({
+        await interaction.reply({
             "components": [
                 {
                     "type": 1,
@@ -32,6 +32,6 @@ module.exports = {
                 }
             ],
             "ephemeral": true
-       });
+        });
     }
 }
