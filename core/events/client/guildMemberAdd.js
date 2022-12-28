@@ -24,7 +24,7 @@ module.exports = async function (client, member) {
       "embeds": [
         {
           "type": "rich",
-          "title": `Welcome ${member.username} on the lounge.`,
+          "title": `Welcome ${member.name} on the lounge.`,
           "description": `Don't forget to go in <#1052173986391400468> to start your verification.`,
           "color": 0xff0080,
           "thumbnail": {
