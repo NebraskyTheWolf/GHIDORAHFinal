@@ -12,7 +12,7 @@ const rankCard = `<div class="ui container page-content">
     <div class="ui stackable grid" style="position:relative;">
         <div class="ui eight wide column">
             <h2 class="ui header">
-                 Profile
+                Profile
                 <div class="sub header"></div>
             </h2>
             <br>
@@ -66,8 +66,8 @@ const rankCard = `<div class="ui container page-content">
             </h2>
             </br>
             <a class="ui pink label">
-              Cutie
-              <div class="detail">Ghidorah user</div>
+                Cutie
+                <div class="detail">Ghidorah user</div>
             </a>
         </div>
 </div>
@@ -82,15 +82,15 @@ module.exports = {
         const id = v4();
 
         client.users.fetch(interaction.member.user.id).then((didUser) => {
-          client.Convertor.generate(rankCard, { 
-                  usericon: didUser.avatarURL(),
-                  username: didUser.tag,
-                  level: user.level,
-                  xp: user.xp,
-                  requiredXp: client.levels.xpFor(user.level + 1),
-                  rankname: client.Modlog.fetchRankData(user.xp).name,
-                  position: user.position,
-                  percent: client.Convertor.rangePercentage(user.xp, 0, client.levels.xpFor(user.level + 1))
+            client.Convertor.generate(rankCard, {
+                usericon: didUser.avatarURL(),
+                username: didUser.tag,
+                level: user.level,
+                xp: user.xp,
+                requiredXp: client.levels.xpFor(user.level + 1),
+                rankname: client.Modlog.fetchRankData(user.xp).name,
+                position: user.position,
+                percent: client.Convertor.rangePercentage(user.xp, 0, client.levels.xpFor(user.level + 1))
             }, async result => {
                 let attachment = new MessageAttachment(result.data, `${id}.png`);
                 let embed = new MessageEmbed()
@@ -104,19 +104,19 @@ module.exports = {
                         {
                             "type": 1,
                             "components": [
-                                  {
-                                      "style": 5,
-                                      "label": `Profile`,
-                                      "url": `${process.env.DEFAULT_DOMAIN}/server/${interaction.guild_id}/${interaction.member.user.id}/profile`,
-                                      "disabled": false,
-                                      "type": 2
-                                  }
-                              ]
+                                {
+                                    "style": 5,
+                                    "label": `Profile`,
+                                    "url": `${process.env.DEFAULT_DOMAIN}/server/${interaction.guild_id}/${interaction.member.user.id}/profile`,
+                                    "disabled": false,
+                                    "type": 2
+                                }
+                            ]
                         }
-                      ],
-                      "files": [attachment],
-                      "flags": 64,
-                      "ephemeral": true
+                    ],
+                    "files": [attachment],
+                    "flags": 64,
+                    "ephemeral": true
                 });
 
                 client.api.interactions(interaction.id, interaction.token).callback.post({
@@ -130,6 +130,6 @@ module.exports = {
             });
         });
 
-       
+
     }
 }

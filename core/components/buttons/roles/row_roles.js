@@ -3,7 +3,7 @@ module.exports = {
         name: "row_roles"
     },
     async checkIfTrue(member, roleId) {
-        return member.roles.cache.some(role => role.id === roleId);
+        return member.roles.cache.some(role => role.id === roleId) || false;
     },
     async execute(interaction, interactionUser, guild) {
         interaction.reply({
