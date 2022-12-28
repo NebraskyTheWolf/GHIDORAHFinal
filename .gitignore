@@ -1,0 +1,13 @@
+/node_modules
+/old
+/json.sqlite
+/package-lock.json
+/.vcode
+/blacklist.json
+/diff.patch
+/test.patch
+/data
+/assets/build
+/.vscode
+/.config
+/test.js

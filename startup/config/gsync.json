@@ -1,0 +1,9 @@
+{
+    "required": {
+        "revision": "R02",
+        "version": "7.0.5",
+        "checksum": "",
+        "signature": ""
+    },
+    "privateKey": "/var/usr/share/ghidorah/private.crt"
+}

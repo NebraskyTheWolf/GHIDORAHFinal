@@ -1,0 +1,12 @@
+{
+	"ownerID": "",
+	"MongoDBInfo": {
+		"host": "mongodb://u4rpljim4ptyglatfycp:e1rv8arenLkAtjvZwkt@bxrhadduyyi8fbvpt5li-mongodb.services.clever-cloud.com:2293/bxrhadduyyi8fbvpt5li"
+	},
+	"RedisClient": {
+		"url": "redis://:4ZzjDngubz0VKWnO0KA@bq5ojfgex1zdw4lwzufu-redis.services.clever-cloud.com:3483"
+	},
+	"protocols": [],
+	"baseProtocol": "security@ghidorah.uk",
+	"eula": false
+}
