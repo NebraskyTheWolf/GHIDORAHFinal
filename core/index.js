@@ -73,7 +73,7 @@ module.exports.start = function () {
 
     client.Modlog = require('./utils/ModLog');
     const Levels = require("discord-xp");
-    Levels.setURL(config.MongoDBInfo.host);
+    Levels.setURL(process.env.MONGODB);
     client.levels = Levels;
 
     client.events = new events.EventEmitter();
