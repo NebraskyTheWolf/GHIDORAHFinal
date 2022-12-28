@@ -6,12 +6,13 @@ module.exports = {
         return client.guilds.cache.get(guild.id).roles.cache.get(roleId);
     },
     async execute(interaction, interactionUser, guild) {
-        for (value in interaction.values) {
-            let role = this.getRoleByID(guild, value);
-            if (interactionUser.roles.get(role))
-                interactionUser.roles.remove(role);
-            else 
-                interactionUser.roles.add(role);
+        let role = this.getRoleByID(guild, interaction.values[0]);
+        if (interactionUser.roles.get(role)) {
+            interactionUser.roles.remove(role);
+            interaction.reply({ content: 'Role removed.', ephemeral: true, });
+        } else {
+            interactionUser.roles.add(role);
+            interaction.reply({ content: 'Role added.', ephemeral: true, });
         }
     }
 }
