@@ -2,9 +2,7 @@ module.exports = {
     data: {
         name: "row_roles"
     },
-    async checkIfTrue(member, roleId) {
-        return member.roles.cache.some(role => role.id === roleId) || false;
-    },
+    async checkIfTrue(member, roleId) { },
     async execute(interaction, interactionUser, guild) {
         interaction.reply({
             "components": [
@@ -19,25 +17,25 @@ module.exports = {
                                     "label": `Ask`,
                                     "value": `1052173889012248616`,
                                     "description": "",
-                                    "default": this.checkIfTrue(interactionUser, '1052173889012248616')
+                                    "default": false
                                 },
                                 {
                                     "label": `She/Her`,
                                     "value": `1052173891327508491`,
                                     "description": "",
-                                    "default": this.checkIfTrue(interactionUser, '1052173891327508491')
+                                    "default": false
                                 },
                                 {
                                     "label": `He/Him`,
                                     "value": `1052173890056622170`,
                                     "description": "",
-                                    "default": this.checkIfTrue(interactionUser, '1052173890056622170')
+                                    "default": false
                                 },
                                 {
                                     "label": `They/Them`,
                                     "value": `1052173892321546350`,
                                     "description": "",
-                                    "default": this.checkIfTrue(interactionUser, '1052173892321546350')
+                                    "default": false
                                 },
                             ],
                             "min_values": 1,
@@ -57,37 +55,37 @@ module.exports = {
                                     "label": `Asia`,
                                     "value": `1052173900517212170`,
                                     "description": "",
-                                    "default": this.checkIfTrue(interactionUser, '1052173900517212170')
+                                    "default": false
                                 },
                                 {
                                     "label": `North America`,
                                     "value": `1052173901536436304`,
                                     "description": "",
-                                    "default": this.checkIfTrue(interactionUser, '1052173901536436304')
+                                    "default": false
                                 },
                                 {
                                     "label": `South America`,
                                     "value": `1052173903042199572`,
                                     "description": "",
-                                    "default": this.checkIfTrue(interactionUser, '1052173903042199572')
+                                    "default": false
                                 },
                                 {
                                     "label": `Europe`,
                                     "value": `1052173904594079764`,
                                     "description": "",
-                                    "default": this.checkIfTrue(interactionUser, '1052173904594079764')
+                                    "default": false
                                 },
                                 {
                                     "label": `Africa`,
                                     "value": `1052173905843994654`,
                                     "description": "",
-                                    "default": this.checkIfTrue(interactionUser, '1052173905843994654')
+                                    "default": false
                                 },
                                 {
                                     "label": `Australia`,
                                     "value": `1052173907148410890`,
                                     "description": "",
-                                    "default": this.checkIfTrue(interactionUser, '1052173907148410890')
+                                    "default": false
                                 },
                             ],
                             "min_values": 1,
