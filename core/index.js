@@ -17,6 +17,7 @@ const func = require('./utils/function');
 const PayloadHandler = require('./utils/PayloadHandler');
 const convertor = require('./utils/ImageHandler');
 const Moderation = require('./utils/ModerationHelper');
+const SecLoader = require('./utils/SecLoader');
 
 const IsLoaded = false;
 const IsDebug = process.env.DEBUG;
@@ -70,6 +71,8 @@ module.exports.start = function () {
     client.redis = redisClient;
 
     client.tasks = new Collection();
+
+    client.SecLoader = SecLoader;
 
     client.Modlog = require('./utils/ModLog');
     const Levels = require("discord-xp");

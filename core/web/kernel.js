@@ -4,6 +4,8 @@ const server = express();
 const bodyParser = require("body-parser");
 const passport = require('passport');
 
+const logger = require('../../../utils/Logger').setPrefix('FoxProx');
+
 const fs = require("fs");
 const https = require('https');
 
@@ -56,7 +58,7 @@ module.exports.bootloader = async function (environement, client) {
 		next();
 	});
 
-	client.logger.log('INFO', `Starting WEBAPP to ${environement} mode..`);
+	logger.log('INFO', `Starting server to ${environement} mode..`);
 
 	switch (environement) {
 		case "FULL": {
@@ -74,25 +76,27 @@ module.exports.bootloader = async function (environement, client) {
 		}
 			break;
 		case "SERVERLESS": {
-			client.logger.log('WARN', `---`);
-			client.logger.log('WARN', `Serverless enabled ALL WEBAPP WILL BE DISABLED!`);
+			logger.log('WARN', `---`);
+			logger.log('WARN', `Serverless enabled ALL WEBAPP WILL BE DISABLED!`);
 		}
 			break;
 		default:
-			client.logger.log('INFO', `${environement} not exist. Serverless mode enabled.`);
+			logger.log('INFO', `${environement} not exist. Serverless mode enabled.`);
 			break;
 	}
 
 	server.use(function (req, res, next) {
 		res.status(404)
 		// respond with json
-		res.json({ status: false, error: 'Method not found.' })
+		res.json({ status: false, error: 'Method not found.' });
+		logger.log('ERROR', `${req.baseUrl} - ${res.statusCode}`);
 	});
 
 	server.use(function (err, req, res, next) {
-		console.error(err)
-		res.status(500).json({ status: false, error: 'An error has occured.' })
+		res.status(500).json({ status: false, error: 'An error has occured.' });
+		logger.log('ERROR', `${req.baseUrl} - ${res.statusCode}`);
 	});
 }
 
 httpsServer.listen(443);
+logger.log('INFO', `Server listening on port 443`);

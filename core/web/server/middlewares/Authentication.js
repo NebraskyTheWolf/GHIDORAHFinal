@@ -6,7 +6,7 @@ module.exports = async function (req, res, next) {
                 next();
             else if (permission.permissionKey === '*')
                 next();
-            else 
+            else
                 res.status(403).json({
                     status: false,
                     code: 445122,

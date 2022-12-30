@@ -8,7 +8,7 @@ module.exports = async (client, interaction) => {
     }
     if (!interaction.guild) return; // AVOID USING INTERACTION IN DMS
     if (!client.IsLoaded) {
-        await interaction.reply({ content: 'My code is loading... Please wait.', ephemeral: true});
+        await interaction.reply({ content: 'My code is loading... Please wait.', ephemeral: true });
         return;
     }
 
@@ -20,7 +20,7 @@ module.exports = async (client, interaction) => {
             const type = interaction.customId.split('row_id_')[1];
             const finalType = type.split('_')[0];
             const button = client.buttons.get("id_button");
-    
+
             switch (finalType) {
                 case "userAction": {
                     button.execute(interaction, interactionUser, guild, {
@@ -32,8 +32,8 @@ module.exports = async (client, interaction) => {
                         ]
                     });
                 }
-                break;
-                case "userVerify": {    
+                    break;
+                case "userVerify": {
                     button.execute(interaction, interactionUser, guild, {
                         type: "VERIFY_ACTION",
                         userId: type.split('_')[1],
@@ -44,7 +44,7 @@ module.exports = async (client, interaction) => {
                         ]
                     });
                 }
-                break;
+                    break;
                 case "modmail": {
                     button.execute(interaction, interactionUser, guild, {
                         type: "MODMAIL",
@@ -52,7 +52,7 @@ module.exports = async (client, interaction) => {
                         permissions: []
                     });
                 }
-                break;
+                    break;
                 case "marriage": {
                     button.execute(interaction, interactionUser, guild, {
                         type: "MARRIAGE",
@@ -61,27 +61,27 @@ module.exports = async (client, interaction) => {
                         permissions: []
                     });
                 }
-                break;
+                    break;
                 default:
-                   client.logger.log('ERROR', `Unresolved action ID: ${finalType} for interaction ID: ${interaction.customId} executed by ${interaction.user.id}`)
-                break;
+                    client.logger.log('ERROR', `Unresolved action ID: ${finalType} for interaction ID: ${interaction.customId} executed by ${interaction.user.id}`)
+                    break;
             }
-        } else if(interaction.isButton() 
+        } else if (interaction.isButton()
             || interaction.isSelectMenu()) {
             const button = client.buttons.get(interaction.customId);
-            if(!button) {
+            if (!button) {
                 client.logger.log('ERROR', `No handler for button ${interaction.customId} : ${interaction.customId}.js not found.`);
                 return;
             }
-    
+
             try {
                 await button.execute(interaction, interactionUser, guild);
             } catch (error) {
                 client.logger.log('ERROR', error);
-                await interaction.reply({ content: 'There was an error while executing the button script !', ephemeral: true});
+                await interaction.reply({ content: 'There was an error while executing the button script !', ephemeral: true });
             }
         }
     } else {
-        await interaction.reply({ content: 'Interactions disabled on this server.', ephemeral: true});
+        await interaction.reply({ content: 'Interactions disabled on this server.', ephemeral: true });
     }
 }
