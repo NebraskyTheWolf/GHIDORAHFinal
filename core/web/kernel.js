@@ -4,7 +4,7 @@ const server = express();
 const bodyParser = require("body-parser");
 const passport = require('passport');
 
-const logger = require('../../../utils/Logger').setPrefix('FoxProx');
+const logger = require('../utils/Logger').setPrefix('FoxProx');
 
 const fs = require("fs");
 const https = require('https');
