@@ -1,6 +1,6 @@
 const fs = require('fs');
-const logger = require('../utils/Logger');
-const authentication = require('../middlewares/Authentication');
+const logger = require('./Logger');
+const authentication = require('../web/server/middlewares/Authentication');
 
 module.exports.load = function (server, side, service, routes) {
     logger.setPrefix(`ROCKET - ${service}`);
