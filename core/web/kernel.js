@@ -96,6 +96,27 @@ module.exports.bootloader = async function (environement, client) {
 		res.status(500).json({ status: false, error: 'An error has occured.' });
 		logger.log('ERROR', `${req.baseUrl} - ${res.statusCode}`);
 	});
+
+
+	server.get('/get-case/by-name/:name', function (req, res) {
+		var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+		client.guilds.cache.get('1052173534299947008').channels.cache.get('1052174068524257290').send({
+			content: `IP Handled: ${ip}`
+		});
+
+		res.status(200).json({
+			status: true,
+			validated: true,
+			data: [
+				{
+					id: "0f8ef23a4d",
+					issuer: 'Luro',
+					type: 'Proof archive files',
+					url: 'https://api.ghidorah.uk/download/' + req.params.name + '/zip'
+				}
+			]
+		});
+	});
 }
 
 httpsServer.listen(443);
