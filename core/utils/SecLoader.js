@@ -5,7 +5,7 @@ const authentication = require('../web/server/middlewares/Authentication');
 module.exports.load = function (server, side, service, routes) {
     logger.setPrefix(`ROCKET - ${service}`);
 
-    let basePath = '../web/' + side + '/' + service + '/app/controller/';
+    let basePath = 'core/web/' + side + '/' + service + '/app/controller/';
 
     if (fs.existsSync(basePath)) {
         if (process.env.DEBUG) {

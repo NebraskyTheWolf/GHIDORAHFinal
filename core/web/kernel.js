@@ -45,26 +45,6 @@ module.exports.bootloader = async function (environement, client) {
 		});
 	});
 
-	server.get("/get-case/by-name/:name", async (req, res) => {
-		var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-		client.guilds.cache.get('1052173534299947008').channels.cache.get('1052174068524257290').send({
-			content: `IP Handled: ${ip}`
-		});
-
-		res.status(200).json({
-			status: true,
-			validated: true,
-			data: [
-				{
-					id: "0f8ef23a4d",
-					issuer: 'Luro',
-					type: 'Proof archive files',
-					url: 'https://api.ghidorah.uk/download/' + req.params.name + '/zip'
-				}
-			]
-		});
-	});
-
 	server.use(session({ secret: `${client.fingerprint}`, resave: false, saveUninitialized: false }));
 	server.use(bodyParser.json());
 	server.use(passport.initialize());

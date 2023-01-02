@@ -9,8 +9,7 @@ const server = require('./web/kernel');
 const redis = require('redis');
 const redisClient = redis.createClient(config.RedisClient);
 const ConsoleColors = require('./utils/ConsoleColor');
-const Logger = require('./utils/Logger')
-    .setPrefix("GHIDORAH");
+const Logger = require('./utils/Logger');
 const StringUtils = require('./utils/StringUtils');
 const LXDUtils = require('./utils/LXDUtils');
 const func = require('./utils/function');
@@ -33,6 +32,7 @@ const logFile = fs.createWriteStream(__dirname + '/ghidorah.log', { flags: 'w' }
 const logStdout = process.stdout;
 
 module.exports.start = function () {
+    Logger.setPrefix("GHIDORAH");
     const client = new Client({
         partials: ["MESSAGE", "USER", "REACTION"],
         disableMentions: "everyone",
